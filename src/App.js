@@ -11,6 +11,17 @@ const sections = [
   { id: "contact", label: "Contact" },
 ];
 
+
+const colors = {
+  cream: "#FAF7F2",
+  charcoal: "#1a1a1a",
+  accent: "#FF6B35",
+  sage: "#7D8471",
+  blush: "#E8D5C4",
+  ink: "#2D2D2D",
+};
+
+
 const scrollToSection = (id, setMobileMenuOpen) => {
   const el = document.getElementById(id);
   if (el) {
@@ -89,12 +100,12 @@ export default function Portfolio() {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
-      
+
       const sectionElements = sections.map(s => ({
         id: s.id,
         el: document.getElementById(s.id)
       }));
-      
+
       for (let i = sectionElements.length - 1; i >= 0; i--) {
         const { id, el } = sectionElements[i];
         if (el && el.getBoundingClientRect().top <= 150) {
@@ -141,14 +152,13 @@ export default function Portfolio() {
       <motion.header
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled
-            ? "bg-[#0a0a0f]/95 backdrop-blur-xl border-b border-white/5 py-3"
-            : "bg-transparent py-4 md:py-6"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
+          ? "bg-[#0a0a0f]/95 backdrop-blur-xl border-b border-white/5 py-3"
+          : "bg-transparent py-4 md:py-6"
+          }`}
       >
         <div className="max-w-6xl mx-auto px-4 md:px-6 flex items-center justify-between">
-          <motion.div 
+          <motion.div
             className="flex items-center gap-3"
             whileHover={{ scale: 1.02 }}
           >
@@ -156,11 +166,10 @@ export default function Portfolio() {
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-full blur-md opacity-50" />
               <img
                 // src="https://cdn-icons-png.flaticon.com/512/3177/3177440.png"
-                  src={userImg}
+                src={userImg}
                 alt="profile"
-                className={`relative rounded-full border-2 border-white/20 object-cover transition-all duration-500 ${
-                  isScrolled ? "w-9 h-9 md:w-10 md:h-10" : "w-11 h-11 md:w-14 md:h-14"
-                }`}
+                className={`relative rounded-full border-2 border-white/20 object-cover transition-all duration-500 ${isScrolled ? "w-9 h-9 md:w-10 md:h-10" : "w-11 h-11 md:w-14 md:h-14"
+                  }`}
               />
             </div>
             <div className={`transition-all duration-500 ${isScrolled ? "opacity-100" : "opacity-0 md:opacity-0 w-0"}`}>
@@ -174,11 +183,10 @@ export default function Portfolio() {
               <button
                 key={s.id}
                 onClick={() => scrollToSection(s.id)}
-                className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-full ${
-                  activeSection === s.id
-                    ? "text-white"
-                    : "text-gray-400 hover:text-white"
-                }`}
+                className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-full ${activeSection === s.id
+                  ? "text-white"
+                  : "text-gray-400 hover:text-white"
+                  }`}
               >
                 {activeSection === s.id && (
                   <motion.div
@@ -245,11 +253,10 @@ export default function Portfolio() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.05 }}
                     onClick={() => scrollToSection(s.id, setMobileMenuOpen)}
-                    className={`text-left px-4 py-3 rounded-xl text-base font-medium transition-all ${
-                      activeSection === s.id
-                        ? "bg-white/10 text-white"
-                        : "text-gray-400 hover:text-white hover:bg-white/5"
-                    }`}
+                    className={`text-left px-4 py-3 rounded-xl text-base font-medium transition-all ${activeSection === s.id
+                      ? "bg-white/10 text-white"
+                      : "text-gray-400 hover:text-white hover:bg-white/5"
+                      }`}
                   >
                     {s.label}
                   </motion.button>
@@ -275,7 +282,7 @@ export default function Portfolio() {
 
       <main className="relative">
         <GradientOrbs />
-        
+
         {/* Hero Section */}
         <section id="home" className="relative min-h-screen flex items-center pt-16 md:pt-20">
           <FloatingParticles />
@@ -395,13 +402,31 @@ export default function Portfolio() {
               transition={{ duration: 2, repeat: Infinity }}
               className="flex flex-col items-center gap-2 text-gray-500"
             >
-              <span className="text-xs uppercase tracking-widest">Scroll</span>
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              {/* <span className="text-xs uppercase tracking-widest">Scroll</span> */}
+              {/* <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-              </svg>
+              </svg> */}
             </motion.div>
           </motion.div>
         </section>
+        
+        {/* Marquee Section */}
+        <div
+          className="py-8 overflow-hidden"
+          style={{ background: colors.charcoal }}
+        >
+          <div className="marquee whitespace-nowrap">
+            {[...Array(2)].map((_, i) => (
+              <span key={i} className="inline-flex items-center gap-12 px-6">
+                {["React.js", "Node.js", "MongoDB", "TypeScript", "AWS", "AI/LLM", "Express.js", "Nest.js"].map((tech) => (
+                  <span key={tech} className="text-xl md:text-2xl font-light tracking-wide" style={{ color: colors.cream }}>
+                    {tech} <span style={{ color: colors.accent }}>✦</span>
+                  </span>
+                ))}
+              </span>
+            ))}
+          </div>
+        </div>
 
         {/* Skills Section */}
         <section id="skills" className="relative py-16 md:py-32">
@@ -493,6 +518,7 @@ export default function Portfolio() {
             </div>
           </div>
         </section>
+
 
         {/* Projects Section */}
         <section id="projects" className="relative py-16 md:py-32 bg-gradient-to-b from-transparent via-blue-950/10 to-transparent">
@@ -632,66 +658,55 @@ export default function Portfolio() {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="relative py-16 md:py-32">
-          <div className="max-w-6xl mx-auto px-4 md:px-6">
+        <section id="contact" className="py-32 px-6" style={{ background: colors.charcoal }}>
+          <div className="max-w-4xl mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-10 md:mb-16"
             >
-              {/* <span className="text-rose-400 text-xs md:text-sm font-medium uppercase tracking-widest">Get in Touch</span> */}
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-3 md:mt-4 mb-4 md:mb-6">Let's Work Together</h2>
-              <p className="text-gray-400 text-sm md:text-base max-w-2xl mx-auto px-4">
-                I'm currently open to opportunities as a Frontend, Full Stack (MERN), or React Developer.
+              <span
+                className="text-sm font-medium uppercase tracking-[0.3em]"
+                style={{ color: colors.accent }}
+              >
+                Get in Touch
+              </span>
+              <h2
+                className="font-display text-5xl md:text-7xl mt-4 leading-tight"
+                style={{ color: colors.cream }}
+              >
+                Let's create something
+                <span className="italic block"> amazing together</span>
+              </h2>
+              <p
+                className="mt-8 text-lg max-w-xl mx-auto"
+                style={{ color: `${colors.cream}99` }}
+              >
+                I'm currently open to opportunities as a Frontend, Full Stack (MERN),
+                or React Developer. Let's connect!
               </p>
+
+              <motion.a
+                href="mailto:susmithagopireddy26@gmail.com"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-block mt-12 px-12 py-5 rounded-full text-lg font-medium transition-all"
+                style={{
+                  background: colors.accent,
+                  color: "white",
+                }}
+              >
+                susmithagopireddy26@gmail.com
+              </motion.a>
+
+              <div className="flex justify-center gap-6 mt-12">
+                <SocialLink href="https://www.linkedin.com/in/susmitha-gopireddy-471091237/" label="LinkedIn" />
+                <SocialLink href="https://github.com/susmitha2826" label="GitHub" />
+              </div>
             </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 max-w-4xl mx-auto">
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="space-y-3 md:space-y-6"
-              >
-                <ContactCard
-                  icon="📧"
-                  label="Email"
-                  value="susmithagopireddy26@gmail.com"
-                  href="mailto:susmithagopireddy26@gmail.com"
-                />
-                <ContactCard
-                  icon="📍"
-                  label="Location"
-                  value="Hyderabad, India"
-                />
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="space-y-3 md:space-y-6"
-              >
-                <ContactCard
-                  icon="💼"
-                  label="LinkedIn"
-                  value="View Profile"
-                  href="https://www.linkedin.com/in/susmitha-gopireddy-471091237/"
-                  external
-                />
-                <ContactCard
-                  icon="💻"
-                  label="GitHub"
-                  value="View Repositories"
-                  href="https://github.com/susmitha2826"
-                  external
-                />
-                
-              </motion.div>
-            </div>
           </div>
         </section>
+
 
         {/* Footer */}
         <footer className="py-6 md:py-8 border-t border-white/5">
@@ -806,7 +821,7 @@ function ExperienceCard({ title, company, location, period, highlights, current 
   return (
     <div className="relative pl-0 md:pl-20">
       <div className="hidden md:block absolute left-6 top-8 w-4 h-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 border-4 border-[#0a0a0f]" />
-      
+
       <motion.div className="group relative">
         <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl md:rounded-3xl blur-lg opacity-0 group-hover:opacity-20 transition-opacity" />
         <div className="relative bg-gradient-to-br from-white/10 to-white/5 border border-white/10 rounded-2xl md:rounded-3xl p-5 md:p-8 backdrop-blur-sm">
@@ -840,40 +855,17 @@ function ExperienceCard({ title, company, location, period, highlights, current 
 }
 
 // Contact Card component
-function ContactCard({ icon, label, value, href, external }) {
-  const content = (
-    <div className="flex items-center gap-3 md:gap-4">
-      <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-white/10 flex items-center justify-center text-lg md:text-xl flex-shrink-0">
-        {icon}
-      </div>
-      <div className="flex-1 min-w-0">
-        <p className="text-[10px] md:text-xs text-gray-500 uppercase tracking-wider mb-0.5 md:mb-1">{label}</p>
-        <p className="text-gray-200 text-sm md:text-base font-medium truncate">{value}</p>
-      </div>
-      {href && (
-        <svg className="w-4 h-4 md:w-5 md:h-5 text-gray-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-        </svg>
-      )}
-    </div>
+function SocialLink({ href, label }) {
+  return (
+    <motion.a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.95 }}
+      className="px-5 md:px-6 py-2.5 md:py-3 rounded-full border border-white/20 text-sm font-medium transition-colors hover:bg-white/10 text-gray-300"
+    >
+      {label} ↗
+    </motion.a>
   );
-
-  const className = "block p-4 md:p-6 bg-gradient-to-br from-white/10 to-white/5 border border-white/10 rounded-xl md:rounded-2xl hover:border-white/20 hover:bg-white/10 transition-all";
-
-  if (href) {
-    return (
-      <motion.a
-        href={href}
-        target={external ? "_blank" : undefined}
-        rel={external ? "noreferrer" : undefined}
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
-        className={className}
-      >
-        {content}
-      </motion.a>
-    );
-  }
-
-  return <div className={className}>{content}</div>;
 }
