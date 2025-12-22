@@ -354,7 +354,7 @@ export default function Portfolio() {
                     <div className="w-3 h-3 rounded-full bg-red-400" />
                     <div className="w-3 h-3 rounded-full bg-yellow-400" />
                     <div className="w-3 h-3 rounded-full bg-green-400" />
-                    <span className="ml-4 text-xs text-gray-500 font-mono">portfolio.jsx</span>
+                    {/* <span className="ml-4 text-xs text-gray-500 font-mono">portfolio.jsx</span> */}
                   </div>
                   <pre className="text-sm font-mono leading-relaxed">
                     <code>
