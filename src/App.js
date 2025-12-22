@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import userImg from "./user.png";
 
 const sections = [
   { id: "home", label: "Home" },
@@ -154,7 +155,8 @@ export default function Portfolio() {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-full blur-md opacity-50" />
               <img
-                src="https://cdn-icons-png.flaticon.com/512/3177/3177440.png"
+                // src="https://cdn-icons-png.flaticon.com/512/3177/3177440.png"
+                  src={userImg}
                 alt="profile"
                 className={`relative rounded-full border-2 border-white/20 object-cover transition-all duration-500 ${
                   isScrolled ? "w-9 h-9 md:w-10 md:h-10" : "w-11 h-11 md:w-14 md:h-14"
@@ -162,7 +164,7 @@ export default function Portfolio() {
               />
             </div>
             <div className={`transition-all duration-500 ${isScrolled ? "opacity-100" : "opacity-0 md:opacity-0 w-0"}`}>
-              <p className="font-semibold text-sm whitespace-nowrap">Susmitha G.</p>
+              <p className="font-semibold text-sm whitespace-nowrap">SUSMITHA GOPIREDDY.</p>
             </div>
           </motion.div>
 
