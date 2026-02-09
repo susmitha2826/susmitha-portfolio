@@ -1,9 +1,9 @@
 {
-  "short_name": "Susmitha",
-  "name": "Susmitha | MERN Stack Developer • AI & LLM Integration",
+  "short_name": "Susmitha Portfolio",
+  "name": "Susmitha Portfolio",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "user.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
