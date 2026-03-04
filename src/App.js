@@ -388,7 +388,7 @@ export default function SpacePortfolio() {
                 />
                 <img
                   src={userImg}
-                  alt="Susmitha"
+                  alt="Susmitha Gopireddy MERN Stack Developer"
                   className="relative w-10 h-10 rounded-full object-cover border-2 border-blue-400/50"
                 />
               </div>
@@ -513,7 +513,7 @@ export default function SpacePortfolio() {
                 <span className="text-gray-200">Hi, I’m</span>
                 <br />
                 <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-gradient">
-                  Susmitha
+                  Susmitha Gopireddy
                 </span>
               </h1>
 
